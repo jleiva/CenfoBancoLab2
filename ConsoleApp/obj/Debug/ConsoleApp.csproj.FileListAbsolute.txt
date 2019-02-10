@@ -1,0 +1,36 @@
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Capa acceso datos\Testing\bin\Debug\ConsoleApp.exe.config
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Capa acceso datos\Testing\bin\Debug\ConsoleApp.exe
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Capa acceso datos\Testing\bin\Debug\ConsoleApp.pdb
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Capa acceso datos\Testing\bin\Debug\DataAcess.dll
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Capa acceso datos\Testing\bin\Debug\Entities-POJO.dll
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Capa acceso datos\Testing\bin\Debug\DataAcess.pdb
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Capa acceso datos\Testing\bin\Debug\Entities-POJO.pdb
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Capa acceso datos\Testing\obj\Debug\ConsoleApp.csprojAssemblyReference.cache
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Capa acceso datos\Testing\obj\Debug\ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Capa acceso datos\Testing\obj\Debug\ConsoleApp.csproj.CopyComplete
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Capa acceso datos\Testing\obj\Debug\ConsoleApp.exe
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Capa acceso datos\Testing\obj\Debug\ConsoleApp.pdb
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Testing\bin\Debug\ConsoleApp.exe.config
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Testing\bin\Debug\ConsoleApp.exe
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Testing\bin\Debug\ConsoleApp.pdb
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Testing\bin\Debug\DataAcess.dll
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Testing\bin\Debug\Entities-POJO.dll
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Testing\bin\Debug\DataAcess.pdb
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Testing\bin\Debug\Entities-POJO.pdb
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Testing\obj\Debug\ConsoleApp.csprojAssemblyReference.cache
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Testing\obj\Debug\ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Testing\obj\Debug\ConsoleApp.csproj.CopyComplete
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Testing\obj\Debug\ConsoleApp.exe
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Testing\obj\Debug\ConsoleApp.pdb
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\ConsoleApp\bin\Debug\ConsoleApp.exe.config
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\ConsoleApp\bin\Debug\ConsoleApp.exe
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\ConsoleApp\bin\Debug\ConsoleApp.pdb
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\ConsoleApp\bin\Debug\DataAcess.dll
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\ConsoleApp\bin\Debug\Entities-POJO.dll
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\ConsoleApp\bin\Debug\DataAcess.pdb
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\ConsoleApp\bin\Debug\Entities-POJO.pdb
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\ConsoleApp\obj\Debug\ConsoleApp.csprojAssemblyReference.cache
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\ConsoleApp\obj\Debug\ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\ConsoleApp\obj\Debug\ConsoleApp.csproj.CopyComplete
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\ConsoleApp\obj\Debug\ConsoleApp.exe
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\ConsoleApp\obj\Debug\ConsoleApp.pdb
