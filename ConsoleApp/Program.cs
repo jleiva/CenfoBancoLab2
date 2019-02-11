@@ -3,6 +3,7 @@ using Entities_POJO;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -218,18 +219,177 @@ namespace ConsoleApp
                     }
 
                     break;
-
             }
         }
 
         public static void MantenimientoCuentas()
         {
+            var mng = new CuentaManagement();
+            var cuenta = new Cuenta();
+
             Console.WriteLine("\r\n");
             Console.WriteLine("***************************");
             Console.WriteLine("** Cuentas opciones CRUD: **");
             Console.WriteLine("***************************");
 
             var operacionSeleccionada = SeleccionarOperacionCrud();
+
+            switch (operacionSeleccionada)
+            {
+                case "1":
+                    Console.WriteLine("\r\n");
+                    Console.WriteLine("*************************************");
+                    Console.WriteLine("*****     CREATE - Cuenta    *******");
+                    Console.WriteLine("*************************************");
+                    Console.WriteLine("Digite el tipo de moneda: \n Colones, Dolares, etc");
+                    var moneda = Console.ReadLine();
+
+                    Console.WriteLine();
+                    Console.WriteLine("Deposito inicial, formato de moneda: 1345.978");
+                    var inicial = Console.ReadLine();
+                    double saldo = 0;
+
+                    if (Double.TryParse(inicial, NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands, CultureInfo.CreateSpecificCulture("es-ES"), out saldo))
+                    {
+                        cuenta = new Cuenta(moneda, saldo);
+                    }
+                    else
+                    {
+                        cuenta = new Cuenta(moneda, saldo);
+                        Console.WriteLine("El valor para deposito inicial no es valido '{0}'.", inicial);
+                        Console.WriteLine("Se creo la cuenta con un saldo de 0");
+                    }
+
+                    mng.Create(cuenta);
+                    Console.WriteLine("La Cuenta se creo de manera exitosa.");
+
+                    break;
+
+                case "2":
+                    Console.WriteLine("***************************");
+                    Console.WriteLine("*****  RETRIEVE ALL - Cuenta   *****");
+                    Console.WriteLine("***************************");
+
+                    var lstCuentas = mng.RetrieveAll();
+                    var count = 0;
+                    DataTable table = new DataTable();
+
+                    table.Columns.Add("#", typeof(string));
+                    table.Columns.Add("ID Cuenta", typeof(string));
+                    table.Columns.Add("Moneda", typeof(string));
+                    table.Columns.Add("Saldo", typeof(double));
+
+                    foreach (var c in lstCuentas)
+                    {
+                        count++;
+                        table.Rows.Add(count, c.Id, c.Moneda, c.Saldo);
+                    }
+
+                    //  formatted table
+                    // https://github.com/minhhungit/ConsoleTableExt/
+                    var tableBuilder = ConsoleTableBuilder.From(table);
+                    tableBuilder.ExportAndWriteLine();
+
+                    break;
+
+                case "3":
+                    Console.WriteLine("Digite el ID de la cuenta:");
+                    var idCuenta = Console.ReadLine();
+                    var id = 0;
+
+                    if (Int32.TryParse(idCuenta, out id))
+                    {
+                        cuenta.Id = id;
+                        cuenta = mng.RetrieveById(cuenta);
+                    }
+                    else
+                    {
+                        throw new Exception("ID de la cuenta debe ser un numero");
+                    }
+                        
+                    if (cuenta != null)
+                    {
+                        Console.WriteLine(" ==> " + cuenta.GetEntityInformation());
+                    }
+                    else
+                    {
+                        throw new Exception("Cuenta no esta registrada");
+                    }
+
+                    break;
+
+                case "4":
+                    Console.WriteLine("***************************");
+                    Console.WriteLine("******  UPDATE  **    *****");
+                    Console.WriteLine("***************************");
+
+                    Console.WriteLine("Digite el ID de la cuenta:");
+                    var idCta = Console.ReadLine();
+                    var idFallback = 0;
+
+                    if (Int32.TryParse(idCta, out idFallback))
+                    {
+                        cuenta.Id = idFallback;
+                        cuenta = mng.RetrieveById(cuenta);
+                    }
+                    else
+                    {
+                        throw new Exception("ID de la cuenta debe ser un numero");
+                    }
+
+                    if (cuenta != null)
+                    {
+                        Console.WriteLine(" ==> " + cuenta.GetEntityInformation());
+
+                        Console.WriteLine("Digite el tipo de Moneda; el valor actual es: " + cuenta.Moneda);
+                        cuenta.Moneda = Console.ReadLine();
+
+                        mng.Update(cuenta);
+                        Console.WriteLine("Cuenta fue actualizada");
+                        Console.WriteLine(" ==> " + cuenta.GetEntityInformation());
+                    }
+                    else
+                    {
+                        throw new Exception("Cuenta no esta registrada");
+                    }
+
+                    break;
+
+                case "5":
+                    Console.WriteLine("Digite el ID de la cuenta:");
+                    var idCtaF = Console.ReadLine();
+                    var idFallbackD = 0;
+
+                    if (Int32.TryParse(idCtaF, out idFallbackD))
+                    {
+                        cuenta.Id = idFallbackD;
+                        cuenta = mng.RetrieveById(cuenta);
+                    }
+                    else
+                    {
+                        throw new Exception("ID de la cuenta debe ser un numero");
+                    }
+
+                    if (cuenta != null)
+                    {
+                        Console.WriteLine(" ==> " + cuenta.GetEntityInformation());
+
+                        Console.WriteLine("Desea eliminar la cuenta? Y/N");
+                        var delete = Console.ReadLine();
+
+                        if (delete.Equals("Y", StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            mng.Delete(cuenta);
+                            Console.WriteLine("Cuenta fue eliminado de manera exitosa.");
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception("Cuenta no esta registrado");
+                    }
+
+                    break;
+            }
         }
 
         public static String SeleccionarOperacionCrud()

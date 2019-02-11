@@ -42,7 +42,9 @@ namespace DataAcess.Mapper
             var operation = new SqlOperation { ProcedureName = "UPD_CUENTA_PR" };
 
             var c = (Cuenta)entity;
+            operation.AddIntParam(DB_COL_ID, c.Id);
             operation.AddDoubleParam(DB_COL_SALDO, c.Saldo);
+            operation.AddVarcharParam(DB_COL_MONEDA, c.Moneda);
 
             return operation;
         }
@@ -62,8 +64,8 @@ namespace DataAcess.Mapper
 
             foreach (var row in lstRows)
             {
-                var customer = BuildObject(row);
-                lstResults.Add(customer);
+                var cuenta = BuildObject(row);
+                lstResults.Add(cuenta);
             }
 
             return lstResults;

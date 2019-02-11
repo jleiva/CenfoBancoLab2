@@ -43,7 +43,9 @@
   <ItemGroup>
     <Compile Include="Crud\ClienteCrudFactory.cs" />
     <Compile Include="Crud\CrudFactory.cs" />
+    <Compile Include="Crud\CuentaCrudFactory.cs" />
     <Compile Include="Mapper\ClienteMapper.cs" />
+    <Compile Include="Mapper\CuentaMapper.cs" />
     <Compile Include="Mapper\EntityMapper.cs" />
     <Compile Include="Mapper\IObjectMapper.cs" />
     <Compile Include="Mapper\ISqlStaments.cs" />
