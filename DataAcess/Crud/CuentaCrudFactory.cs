@@ -6,24 +6,22 @@ using DataAcess.Dao;
 
 namespace DataAcess.Crud
 {
-    public class CustomerCrudFactory : CrudFactory
+    public class CuentaCrudFactory : CrudFactory
     {
-        CustomerMapper mapper;
+        CuentaMapper mapper;
 
-        public CustomerCrudFactory() : base()
+        public CuentaCrudFactory() : base()
         {
-            mapper = new CustomerMapper();
+            mapper = new CuentaMapper();
             dao = SqlDao.GetInstance();
         }
 
         public override void Create(BaseEntity entity)
         {
-            var customer=(Customer) entity;
-            var sqlOperation = mapper.GetCreateStatement(customer);
+            var cuenta = (Cuenta)entity;
+            var sqlOperation = mapper.GetCreateStatement(cuenta);
             dao.ExecuteProcedure(sqlOperation);
         }
-
-      
 
         public override T Retrieve<T>(BaseEntity entity)
         {
@@ -42,7 +40,7 @@ namespace DataAcess.Crud
         public override List<T> RetrieveAll<T>()
         {
             var lstCustomers = new List<T>();
-            
+
             var lstResult = dao.ExecuteQueryProcedure(mapper.GetRetriveAllStatement());
             var dic = new Dictionary<string, object>();
             if (lstResult.Count > 0)
@@ -53,20 +51,20 @@ namespace DataAcess.Crud
                     lstCustomers.Add((T)Convert.ChangeType(c, typeof(T)));
                 }
             }
-           
+
             return lstCustomers;
         }
 
         public override void Update(BaseEntity entity)
         {
-            var customer = (Customer)entity;
-            dao.ExecuteProcedure(mapper.GetUpdateStatement(customer));
+            var cuenta = (Cuenta)entity;
+            dao.ExecuteProcedure(mapper.GetUpdateStatement(cuenta));
         }
 
         public override void Delete(BaseEntity entity)
         {
-            var customer = (Customer)entity;
-            dao.ExecuteProcedure(mapper.GetDeleteStatement(customer));
+            var cuenta = (Cuenta)entity;
+            dao.ExecuteProcedure(mapper.GetDeleteStatement(cuenta));
         }
     }
 }

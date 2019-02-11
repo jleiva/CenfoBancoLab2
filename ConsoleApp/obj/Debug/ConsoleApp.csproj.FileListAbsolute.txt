@@ -34,3 +34,4 @@ C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\ConsoleApp\obj\Debug\ConsoleApp
 C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\ConsoleApp\obj\Debug\ConsoleApp.csproj.CopyComplete
 C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\ConsoleApp\obj\Debug\ConsoleApp.exe
 C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\ConsoleApp\obj\Debug\ConsoleApp.pdb
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\ConsoleApp\bin\Debug\ConsoleTableExt.dll

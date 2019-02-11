@@ -11,7 +11,7 @@ C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Capa acceso datos\Entities-POJO
 C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Capa acceso datos\Entities-POJO\obj\Debug\Entities-POJO.pdb
 C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Entities-POJO\bin\Debug\Entities-POJO.dll
 C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Entities-POJO\bin\Debug\Entities-POJO.pdb
-C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Entities-POJO\obj\Debug\Entities-POJO.csprojAssemblyReference.cache
 C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Entities-POJO\obj\Debug\Entities-POJO.csproj.CoreCompileInputs.cache
 C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Entities-POJO\obj\Debug\Entities-POJO.dll
 C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Entities-POJO\obj\Debug\Entities-POJO.pdb
+C:\Users\leiva\Proyectos\VisualStudio\CenfoBanco\Entities-POJO\obj\Debug\Entities-POJO.csprojAssemblyReference.cache

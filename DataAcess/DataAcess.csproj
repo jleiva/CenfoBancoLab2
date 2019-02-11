@@ -41,9 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Crud\CustomerCrudFactory.cs" />
+    <Compile Include="Crud\ClienteCrudFactory.cs" />
     <Compile Include="Crud\CrudFactory.cs" />
-    <Compile Include="Mapper\CustomerMapper.cs" />
+    <Compile Include="Mapper\ClienteMapper.cs" />
     <Compile Include="Mapper\EntityMapper.cs" />
     <Compile Include="Mapper\IObjectMapper.cs" />
     <Compile Include="Mapper\ISqlStaments.cs" />
