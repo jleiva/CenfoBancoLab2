@@ -24,8 +24,8 @@ namespace ConsoleApp
         public static void DoIt() { 
             try
             {
-                var mng = new ClienteManagement();
-                var customer = new Cliente();
+                var mng = new CustomerManagement();
+                var customer = new Customer();
 
                 Console.WriteLine("***************************");
                 Console.WriteLine("**** CenfoBanco ****");
@@ -41,12 +41,12 @@ namespace ConsoleApp
                 switch (option)
                 {
                     case "1":
-                        MantenimientoClientes();
+                        CustomerOperations();
 
                         break;
 
                     case "2":
-                        MantenimientoCuentas();
+                        AccountOperations();
 
                         break;
                     case "3":
@@ -72,17 +72,17 @@ namespace ConsoleApp
             }
         }
 
-        public static void MantenimientoClientes()
+        public static void CustomerOperations()
         {
-            var mng = new ClienteManagement();
-            var customer = new Cliente();
+            var mng = new CustomerManagement();
+            var customer = new Customer();
 
             Console.WriteLine("\r\n");
             Console.WriteLine("***************************");
             Console.WriteLine("** Clientes opciones CRUD: **");
             Console.WriteLine("***************************");
 
-            var operacionSeleccionada = SeleccionarOperacionCrud();
+            var operacionSeleccionada = SelectCrudOperation();
             
             switch (operacionSeleccionada)
             {
@@ -109,7 +109,7 @@ namespace ConsoleApp
                     var infoCliente = $"{nombreCompleto}, {info}, {fechaNacimiento}, {edad}";
                     var infoArray = infoCliente.Split(',');
 
-                    customer = new Cliente(infoArray);
+                    customer = new Customer(infoArray);
                     mng.Create(customer);
 
                     Console.WriteLine("Customer was created");
@@ -222,17 +222,31 @@ namespace ConsoleApp
             }
         }
 
-        public static void MantenimientoCuentas()
+        public static void CreditOperations()
         {
-            var mng = new CuentaManagement();
-            var cuenta = new Cuenta();
+            var mng = new AccountManagement();
+            var credit = new Credit();
+
+            Console.WriteLine("\r\n");
+            Console.WriteLine("***************************");
+            Console.WriteLine("** Creditos opciones CRUD: **");
+            Console.WriteLine("***************************");
+
+            var operacionSeleccionada = SelectCrudOperation();
+        }
+
+        public static void AccountOperations()
+        {
+
+            var mng = new AccountManagement();
+            var account = new Account();
 
             Console.WriteLine("\r\n");
             Console.WriteLine("***************************");
             Console.WriteLine("** Cuentas opciones CRUD: **");
             Console.WriteLine("***************************");
 
-            var operacionSeleccionada = SeleccionarOperacionCrud();
+            var operacionSeleccionada = SelectCrudOperation();
 
             switch (operacionSeleccionada)
             {
@@ -241,27 +255,42 @@ namespace ConsoleApp
                     Console.WriteLine("*************************************");
                     Console.WriteLine("*****     CREATE - Cuenta    *******");
                     Console.WriteLine("*************************************");
-                    Console.WriteLine("Digite el tipo de moneda: \n Colones, Dolares, etc");
-                    var moneda = Console.ReadLine();
 
-                    Console.WriteLine();
-                    Console.WriteLine("Deposito inicial, formato de moneda: 1345.978");
-                    var inicial = Console.ReadLine();
-                    double saldo = 0;
+                    var cMng = new CustomerManagement();
+                    var customer = new Customer();
 
-                    if (Double.TryParse(inicial, NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands, CultureInfo.CreateSpecificCulture("es-ES"), out saldo))
+                    Console.WriteLine("Digite la cedula del cliente:");
+                    customer.Cedula = Console.ReadLine();
+                    customer = cMng.RetrieveById(customer);
+
+                    if (customer != null)
                     {
-                        cuenta = new Cuenta(moneda, saldo);
+                        Console.WriteLine("Digite el tipo de moneda: \n Colones, Dolares, etc");
+                        var moneda = Console.ReadLine();
+
+                        Console.WriteLine();
+                        Console.WriteLine("Deposito inicial, formato de moneda: 1345.978");
+                        var inicial = Console.ReadLine();
+                        double saldo = 0;
+
+                        if (Double.TryParse(inicial, out saldo))
+                        {
+                            account = new Account(moneda, customer.Cedula, saldo);
+                        }
+                        else
+                        {
+                            account = new Account(moneda, customer.Cedula, saldo);
+                            Console.WriteLine("El valor para deposito inicial no es valido '{0}'.", inicial);
+                            Console.WriteLine("Se creo la cuenta con un saldo de 0");
+                        }
+
+                        mng.Create(account);
+                        Console.WriteLine("La Cuenta se creo de manera exitosa.");
                     }
                     else
                     {
-                        cuenta = new Cuenta(moneda, saldo);
-                        Console.WriteLine("El valor para deposito inicial no es valido '{0}'.", inicial);
-                        Console.WriteLine("Se creo la cuenta con un saldo de 0");
+                        throw new Exception("Cliente no esta registrado");
                     }
-
-                    mng.Create(cuenta);
-                    Console.WriteLine("La Cuenta se creo de manera exitosa.");
 
                     break;
 
@@ -276,13 +305,14 @@ namespace ConsoleApp
 
                     table.Columns.Add("#", typeof(string));
                     table.Columns.Add("ID Cuenta", typeof(string));
+                    table.Columns.Add("ID Cliente", typeof(string));
                     table.Columns.Add("Moneda", typeof(string));
                     table.Columns.Add("Saldo", typeof(double));
 
                     foreach (var c in lstCuentas)
                     {
                         count++;
-                        table.Rows.Add(count, c.Id, c.Moneda, c.Saldo);
+                        table.Rows.Add(count, c.Id, c.ClienteId, c.Moneda, c.Saldo);
                     }
 
                     //  formatted table
@@ -299,17 +329,17 @@ namespace ConsoleApp
 
                     if (Int32.TryParse(idCuenta, out id))
                     {
-                        cuenta.Id = id;
-                        cuenta = mng.RetrieveById(cuenta);
+                        account.Id = id;
+                        account = mng.RetrieveById(account);
                     }
                     else
                     {
                         throw new Exception("ID de la cuenta debe ser un numero");
                     }
                         
-                    if (cuenta != null)
+                    if (account != null)
                     {
-                        Console.WriteLine(" ==> " + cuenta.GetEntityInformation());
+                        Console.WriteLine(" ==> " + account.GetEntityInformation());
                     }
                     else
                     {
@@ -329,24 +359,27 @@ namespace ConsoleApp
 
                     if (Int32.TryParse(idCta, out idFallback))
                     {
-                        cuenta.Id = idFallback;
-                        cuenta = mng.RetrieveById(cuenta);
+                        account.Id = idFallback;
+                        account = mng.RetrieveById(account);
                     }
                     else
                     {
                         throw new Exception("ID de la cuenta debe ser un numero");
                     }
 
-                    if (cuenta != null)
+                    if (account != null)
                     {
-                        Console.WriteLine(" ==> " + cuenta.GetEntityInformation());
+                        Console.WriteLine(" ==> " + account.GetEntityInformation());
 
-                        Console.WriteLine("Digite el tipo de Moneda; el valor actual es: " + cuenta.Moneda);
-                        cuenta.Moneda = Console.ReadLine();
+                        Console.WriteLine("Digite el tipo de Moneda; el valor actual es: " + account.Moneda);
+                        account.Moneda = Console.ReadLine();
 
-                        mng.Update(cuenta);
+                        Console.WriteLine("Digite el Id del Cliente; el valor actual es: " + account.ClienteId);
+                        account.ClienteId = Console.ReadLine();
+
+                        mng.Update(account);
                         Console.WriteLine("Cuenta fue actualizada");
-                        Console.WriteLine(" ==> " + cuenta.GetEntityInformation());
+                        Console.WriteLine(" ==> " + account.GetEntityInformation());
                     }
                     else
                     {
@@ -362,24 +395,24 @@ namespace ConsoleApp
 
                     if (Int32.TryParse(idCtaF, out idFallbackD))
                     {
-                        cuenta.Id = idFallbackD;
-                        cuenta = mng.RetrieveById(cuenta);
+                        account.Id = idFallbackD;
+                        account = mng.RetrieveById(account);
                     }
                     else
                     {
                         throw new Exception("ID de la cuenta debe ser un numero");
                     }
 
-                    if (cuenta != null)
+                    if (account != null)
                     {
-                        Console.WriteLine(" ==> " + cuenta.GetEntityInformation());
+                        Console.WriteLine(" ==> " + account.GetEntityInformation());
 
                         Console.WriteLine("Desea eliminar la cuenta? Y/N");
                         var delete = Console.ReadLine();
 
                         if (delete.Equals("Y", StringComparison.CurrentCultureIgnoreCase))
                         {
-                            mng.Delete(cuenta);
+                            mng.Delete(account);
                             Console.WriteLine("Cuenta fue eliminado de manera exitosa.");
                         }
                     }
@@ -392,14 +425,13 @@ namespace ConsoleApp
             }
         }
 
-        public static String SeleccionarOperacionCrud()
+        public static String SelectCrudOperation()
         {
-
-            Console.WriteLine("1.CREATE");
-            Console.WriteLine("2.RETRIEVE ALL");
-            Console.WriteLine("3.RETRIEVE BY ID");
-            Console.WriteLine("4.UPDATE");
-            Console.WriteLine("5.DELETE");
+            Console.WriteLine("1. CREATE");
+            Console.WriteLine("2. RETRIEVE ALL");
+            Console.WriteLine("3. RETRIEVE BY ID");
+            Console.WriteLine("4. UPDATE");
+            Console.WriteLine("5. DELETE");
 
             Console.WriteLine("Seleccione una opcion: ");
             var option = Console.ReadLine();

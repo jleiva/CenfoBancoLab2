@@ -4,9 +4,10 @@ using System.Collections.Generic;
 
 namespace DataAcess.Mapper
 {
-    public class CuentaMapper : EntityMapper, ISqlStaments, IObjectMapper
+    public class AccountMapper : EntityMapper, ISqlStaments, IObjectMapper
     {
         private const string DB_COL_ID = "ID";
+        private const string DB_COL_CLIENTEID = "CLIENTEID";
         private const string DB_COL_MONEDA = "MONEDA";
         private const string DB_COL_SALDO = "SALDO";
 
@@ -14,8 +15,9 @@ namespace DataAcess.Mapper
         {
             var operation = new SqlOperation { ProcedureName = "CRE_CUENTA_PR" };
 
-            var c = (Cuenta)entity;
+            var c = (Account)entity;
             operation.AddVarcharParam(DB_COL_MONEDA, c.Moneda);
+            operation.AddVarcharParam(DB_COL_CLIENTEID, c.ClienteId);
             operation.AddDoubleParam(DB_COL_SALDO, c.Saldo);
 
             return operation;
@@ -25,7 +27,7 @@ namespace DataAcess.Mapper
         {
             var operation = new SqlOperation { ProcedureName = "RET_CUENTA_PR" };
 
-            var c = (Cuenta)entity;
+            var c = (Account)entity;
             operation.AddIntParam(DB_COL_ID, c.Id);
 
             return operation;
@@ -41,10 +43,11 @@ namespace DataAcess.Mapper
         {
             var operation = new SqlOperation { ProcedureName = "UPD_CUENTA_PR" };
 
-            var c = (Cuenta)entity;
+            var c = (Account)entity;
             operation.AddIntParam(DB_COL_ID, c.Id);
             operation.AddDoubleParam(DB_COL_SALDO, c.Saldo);
             operation.AddVarcharParam(DB_COL_MONEDA, c.Moneda);
+            operation.AddVarcharParam(DB_COL_CLIENTEID, c.ClienteId);
 
             return operation;
         }
@@ -53,7 +56,7 @@ namespace DataAcess.Mapper
         {
             var operation = new SqlOperation { ProcedureName = "DEL_CUENTA_PR" };
 
-            var c = (Cuenta)entity;
+            var c = (Account)entity;
             operation.AddIntParam(DB_COL_ID, c.Id);
             return operation;
         }
@@ -64,8 +67,8 @@ namespace DataAcess.Mapper
 
             foreach (var row in lstRows)
             {
-                var cuenta = BuildObject(row);
-                lstResults.Add(cuenta);
+                var account = BuildObject(row);
+                lstResults.Add(account);
             }
 
             return lstResults;
@@ -73,14 +76,15 @@ namespace DataAcess.Mapper
 
         public BaseEntity BuildObject(Dictionary<string, object> row)
         {
-            var cuenta = new Cuenta
+            var account = new Account
             {
                 Id = GetIntValue(row, DB_COL_ID),
                 Moneda = GetStringValue(row, DB_COL_MONEDA),
+                ClienteId = GetStringValue(row, DB_COL_CLIENTEID),
                 Saldo = GetDoubleValue(row, DB_COL_SALDO)
             };
 
-            return cuenta;
+            return account;
         }
     }
 }

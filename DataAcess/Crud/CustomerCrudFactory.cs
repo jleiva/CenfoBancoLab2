@@ -6,19 +6,19 @@ using DataAcess.Dao;
 
 namespace DataAcess.Crud
 {
-    public class ClienteCrudFactory : CrudFactory
+    public class CustomerCrudFactory : CrudFactory
     {
-        ClienteMapper mapper;
+        CustomerMapper mapper;
 
-        public ClienteCrudFactory() : base()
+        public CustomerCrudFactory() : base()
         {
-            mapper = new ClienteMapper();
+            mapper = new CustomerMapper();
             dao = SqlDao.GetInstance();
         }
 
         public override void Create(BaseEntity entity)
         {
-            var customer=(Cliente) entity;
+            var customer=(Customer) entity;
             var sqlOperation = mapper.GetCreateStatement(customer);
             dao.ExecuteProcedure(sqlOperation);
         }
@@ -57,13 +57,13 @@ namespace DataAcess.Crud
 
         public override void Update(BaseEntity entity)
         {
-            var customer = (Cliente)entity;
+            var customer = (Customer)entity;
             dao.ExecuteProcedure(mapper.GetUpdateStatement(customer));
         }
 
         public override void Delete(BaseEntity entity)
         {
-            var customer = (Cliente)entity;
+            var customer = (Customer)entity;
             dao.ExecuteProcedure(mapper.GetDeleteStatement(customer));
         }
     }

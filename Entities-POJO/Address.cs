@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace Entities_POJO
 {
-    class Direccion : BaseEntity
+    public class Address : BaseEntity
     {
         public string Provincia { get; set; }
         public string Canton { get; set; }
         public string Distrito { get; set; }
 
-        public Direccion()
+        public Address()
         {
         }
 
-        public Direccion(string provincia, string canton, string distrito)
+        public Address(string provincia, string canton, string distrito)
         {
             Provincia = provincia;
             Canton = canton;

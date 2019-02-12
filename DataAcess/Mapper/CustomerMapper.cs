@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DataAcess.Mapper
 {
-    public class ClienteMapper : EntityMapper, ISqlStaments, IObjectMapper
+    public class CustomerMapper : EntityMapper, ISqlStaments, IObjectMapper
     {
         private const string DB_COL_CEDULA = "CEDULA";
         private const string DB_COL_NOMBRE = "NOMBRE";
@@ -19,7 +19,7 @@ namespace DataAcess.Mapper
         {
             var operation = new SqlOperation {ProcedureName = "CRE_CLIENTE_PR"};
 
-            var c = (Cliente) entity;            
+            var c = (Customer) entity;            
             operation.AddVarcharParam(DB_COL_CEDULA, c.Cedula);
             operation.AddVarcharParam(DB_COL_NOMBRE, c.Nombre);
             operation.AddVarcharParam(DB_COL_APELLIDO, c.Apellido);
@@ -36,7 +36,7 @@ namespace DataAcess.Mapper
         {
             var operation = new SqlOperation {ProcedureName = "RET_CLIENTE_PR"};
 
-            var c = (Cliente)entity;
+            var c = (Customer)entity;
             operation.AddVarcharParam(DB_COL_CEDULA, c.Cedula);
          
             return operation;
@@ -52,7 +52,7 @@ namespace DataAcess.Mapper
         {
             var operation = new SqlOperation { ProcedureName = "UPD_CLIENTE_PR" };
 
-            var c = (Cliente)entity;
+            var c = (Customer)entity;
             operation.AddVarcharParam(DB_COL_CEDULA, c.Cedula);
             operation.AddVarcharParam(DB_COL_NOMBRE, c.Nombre);
             operation.AddVarcharParam(DB_COL_APELLIDO, c.Apellido);
@@ -68,7 +68,7 @@ namespace DataAcess.Mapper
         {
             var operation = new SqlOperation { ProcedureName = "DEL_CLIENTE_PR" };
 
-            var c = (Cliente)entity;
+            var c = (Customer)entity;
             operation.AddVarcharParam(DB_COL_CEDULA, c.Cedula);
             return operation;
         }
@@ -88,7 +88,7 @@ namespace DataAcess.Mapper
 
         public BaseEntity BuildObject(Dictionary<string, object> row)
         {
-            var customer = new Cliente
+            var customer = new Customer
             {
                 Cedula = GetStringValue(row, DB_COL_CEDULA),
                 Nombre = GetStringValue(row, DB_COL_NOMBRE),
@@ -101,7 +101,7 @@ namespace DataAcess.Mapper
 
         public BaseEntity BuildCompleteObject(Dictionary<string, object> row)
         {
-            var customer = new Cliente
+            var customer = new Customer
             {
                 Cedula = GetStringValue(row, DB_COL_CEDULA),
                 Nombre = GetStringValue(row, DB_COL_NOMBRE),

@@ -6,26 +6,29 @@ using System.Threading.Tasks;
 
 namespace Entities_POJO
 {
-    public class Cuenta : BaseEntity
+    public class Account : BaseEntity
     {
         public int Id { get; set; }
         public string Moneda { get; set; }
+        public string ClienteId { get; set; }
         public double Saldo { get; set; }
 
-        public Cuenta()
+        public Account()
         {
         }
 
-        public Cuenta(string moneda, double saldo)
+        public Account(string moneda, string clienteId, double saldo)
         {
+            ClienteId = clienteId;
             Moneda = moneda;
             Saldo = saldo;
         }
 
-        public Cuenta(int id, string moneda, double saldo)
+        public Account(int id, string moneda, string clienteId, double saldo)
         {
             Id = id;
             Moneda = moneda;
+            ClienteId = clienteId;
             Saldo = saldo;
         }
     }

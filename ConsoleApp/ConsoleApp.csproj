@@ -63,8 +63,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClienteManagement.cs" />
-    <Compile Include="CuentaManagement.cs" />
+    <Compile Include="CustomerManagement.cs" />
+    <Compile Include="AccountManagement.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

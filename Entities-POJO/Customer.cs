@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entities_POJO
 {
-    public class Cliente : BaseEntity
+    public class Customer : BaseEntity
     {
         public string Cedula { get; set; }
         public string Nombre { get; set; }
@@ -16,12 +16,12 @@ namespace Entities_POJO
         public string FechaNacimiento { get; set; }
         public int Edad { get; set; }
 
-        public Cliente()
+        public Customer()
         {
             
         }
 
-        public Cliente(string[] infoArray)
+        public Customer(string[] infoArray)
         {
             if(infoArray!=null && infoArray.Length >= 7){
                 Cedula = infoArray[0];
