@@ -91,12 +91,9 @@ namespace DataAcess.Mapper
             var credit = new Credit
             {
                 Id = GetIntValue(row, DB_COL_ID),
-                Moneda = GetStringValue(row, DB_COL_MONEDA),
-                ClienteId = GetStringValue(row, DB_COL_CLIENTEID),
-                Saldo = GetDoubleValue(row, DB_COL_SALDO)
             };
 
-            return account;
+            return credit;
         }
     }
 }

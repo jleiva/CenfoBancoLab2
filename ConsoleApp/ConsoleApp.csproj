@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreditManagement.cs" />
     <Compile Include="CustomerManagement.cs" />
     <Compile Include="AccountManagement.cs" />
     <Compile Include="Program.cs" />

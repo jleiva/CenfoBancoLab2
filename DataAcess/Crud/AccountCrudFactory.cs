@@ -63,8 +63,8 @@ namespace DataAcess.Crud
 
         public override void Delete(BaseEntity entity)
         {
-            var cuenta = (Account)entity;
-            dao.ExecuteProcedure(mapper.GetDeleteStatement(cuenta));
+            var account = (Account)entity;
+            dao.ExecuteProcedure(mapper.GetDeleteStatement(account));
         }
     }
 }

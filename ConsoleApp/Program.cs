@@ -12,13 +12,14 @@ namespace ConsoleApp
 {
     class Program
     {
-       
+        enum OPERATIONS {
+            CREATE, RETRIVE, UPDATE, DELETE, RETRIVE_ALL
+        };
 
         static void Main(string[] args)
         {
 
             DoIt();
-
         }
 
         public static void DoIt() { 
@@ -83,14 +84,11 @@ namespace ConsoleApp
             Console.WriteLine("***************************");
 
             var operacionSeleccionada = SelectCrudOperation();
-            
+
             switch (operacionSeleccionada)
             {
                 case "1":
-                    Console.WriteLine("\r\n");
-                    Console.WriteLine("*************************************");
-                    Console.WriteLine("*****     CREATE - Cliente    *******");
-                    Console.WriteLine("*************************************");
+                    Console.WriteLine(getOperationHeading(0));
                     Console.WriteLine("Digite cedula, nombre y apellido del cliente, separado por coma");
                     var nombreCompleto = Console.ReadLine();
 
@@ -117,9 +115,7 @@ namespace ConsoleApp
                     break;
 
                 case "2":
-                    Console.WriteLine("***************************");
-                    Console.WriteLine("*****  RETRIEVE ALL - Cliente   *****");
-                    Console.WriteLine("***************************");
+                    Console.WriteLine(getOperationHeading(4));
 
                     var lstCustomers = mng.RetrieveAll();
                     var count = 0;
@@ -144,6 +140,7 @@ namespace ConsoleApp
 
                     break;
                 case "3":
+                    Console.WriteLine(getOperationHeading(1));
                     Console.WriteLine("Digite la cedula del cliente:");
                     customer.Cedula = Console.ReadLine();
                     customer = mng.RetrieveById(customer);
@@ -159,9 +156,7 @@ namespace ConsoleApp
 
                     break;
                 case "4":
-                    Console.WriteLine("***************************");
-                    Console.WriteLine("******  UPDATE  **    *****");
-                    Console.WriteLine("***************************");
+                    Console.WriteLine(getOperationHeading(2));
 
                     Console.WriteLine("Digite la cedula del cliente:");
                     customer.Cedula = Console.ReadLine();
@@ -196,6 +191,7 @@ namespace ConsoleApp
                     break;
 
                 case "5":
+                    Console.WriteLine(getOperationHeading(3));
                     Console.WriteLine("Digite la cedula del cliente:");
                     customer.Cedula = Console.ReadLine();
                     customer = mng.RetrieveById(customer);
@@ -224,7 +220,7 @@ namespace ConsoleApp
 
         public static void CreditOperations()
         {
-            var mng = new AccountManagement();
+            var mng = new CreditManagement();
             var credit = new Credit();
 
             Console.WriteLine("\r\n");
@@ -233,6 +229,33 @@ namespace ConsoleApp
             Console.WriteLine("***************************");
 
             var operacionSeleccionada = SelectCrudOperation();
+
+            switch (operacionSeleccionada)
+            {
+                case "1":
+                    Console.WriteLine(getOperationHeading(0));
+
+                    break;
+
+                case "2":
+                    Console.WriteLine(getOperationHeading(4));
+
+                    break;
+
+                case "3":
+                    Console.WriteLine(getOperationHeading(1));
+                    Console.WriteLine("Digite el ID de la cuenta:");
+                    break;
+
+                case "4":
+                    Console.WriteLine(getOperationHeading(2));
+                    break;
+
+                case "5":
+                    Console.WriteLine(getOperationHeading(3));
+                    Console.WriteLine("Digite el ID de la cuenta:");
+                    break;
+            }
         }
 
         public static void AccountOperations()
@@ -251,14 +274,10 @@ namespace ConsoleApp
             switch (operacionSeleccionada)
             {
                 case "1":
-                    Console.WriteLine("\r\n");
-                    Console.WriteLine("*************************************");
-                    Console.WriteLine("*****     CREATE - Cuenta    *******");
-                    Console.WriteLine("*************************************");
-
                     var cMng = new CustomerManagement();
                     var customer = new Customer();
 
+                    Console.WriteLine(getOperationHeading(0));
                     Console.WriteLine("Digite la cedula del cliente:");
                     customer.Cedula = Console.ReadLine();
                     customer = cMng.RetrieveById(customer);
@@ -295,9 +314,7 @@ namespace ConsoleApp
                     break;
 
                 case "2":
-                    Console.WriteLine("***************************");
-                    Console.WriteLine("*****  RETRIEVE ALL - Cuenta   *****");
-                    Console.WriteLine("***************************");
+                    Console.WriteLine(getOperationHeading(4));
 
                     var lstCuentas = mng.RetrieveAll();
                     var count = 0;
@@ -323,6 +340,7 @@ namespace ConsoleApp
                     break;
 
                 case "3":
+                    Console.WriteLine(getOperationHeading(1));
                     Console.WriteLine("Digite el ID de la cuenta:");
                     var idCuenta = Console.ReadLine();
                     var id = 0;
@@ -349,9 +367,7 @@ namespace ConsoleApp
                     break;
 
                 case "4":
-                    Console.WriteLine("***************************");
-                    Console.WriteLine("******  UPDATE  **    *****");
-                    Console.WriteLine("***************************");
+                    Console.WriteLine(getOperationHeading(2));
 
                     Console.WriteLine("Digite el ID de la cuenta:");
                     var idCta = Console.ReadLine();
@@ -389,6 +405,7 @@ namespace ConsoleApp
                     break;
 
                 case "5":
+                    Console.WriteLine(getOperationHeading(3));
                     Console.WriteLine("Digite el ID de la cuenta:");
                     var idCtaF = Console.ReadLine();
                     var idFallbackD = 0;
@@ -437,6 +454,15 @@ namespace ConsoleApp
             var option = Console.ReadLine();
 
             return option;
+        }
+
+        public static String getOperationHeading(int headingType)
+        {
+            var operation = Enum.GetName(typeof(OPERATIONS), headingType);
+            var spacing = "*************************************";
+            var heading = $"\n{spacing} \n***** {operation} ***** \n{spacing}";
+
+            return heading;
         }
     }
 }
