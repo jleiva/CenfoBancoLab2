@@ -16,12 +16,13 @@ namespace Entities_POJO
         public string FechaInicio { get; set; }
         public string Estado { get; set; }
         public double Saldo { get; set; }
+        public string Moneda { get; set; }
 
         public Credit()
         {
         }
 
-        public Credit(double monto, double tasa, string clienteId, double cuota, string fechaInicio, string estado, double saldo)
+        public Credit(double monto, double tasa, string clienteId, double cuota, string fechaInicio, string estado, double saldo, string moneda)
         {
             Monto = monto;
             Tasa = tasa;
@@ -30,9 +31,10 @@ namespace Entities_POJO
             FechaInicio = fechaInicio;
             Estado = estado;
             Saldo = saldo;
+            Moneda = moneda;
         }
 
-        public Credit(int id, double monto, double tasa, string clienteId, double cuota, string fechaInicio, string estado, double saldo)
+        public Credit(int id, double monto, double tasa, string clienteId, double cuota, string fechaInicio, string estado, double saldo, string moneda)
         {
             Id = id;
             Monto = monto;
@@ -42,6 +44,7 @@ namespace Entities_POJO
             FechaInicio = fechaInicio;
             Estado = estado;
             Saldo = saldo;
+            Moneda = moneda;
         }
     }
 }

@@ -14,6 +14,7 @@ namespace DataAcess.Mapper
         private const string DB_COL_FEC_INIC = "FEC_INIC";
         private const string DB_COL_ESTADO = "ESTADO";
         private const string DB_COL_SALDO = "SALDO";
+        private const string DB_COL_MONEDA = "MONEDA";
 
         public SqlOperation GetCreateStatement(BaseEntity entity)
         {
@@ -27,6 +28,7 @@ namespace DataAcess.Mapper
             operation.AddVarcharParam(DB_COL_FEC_INIC, c.FechaInicio);
             operation.AddVarcharParam(DB_COL_ESTADO, c.Estado);
             operation.AddDoubleParam(DB_COL_SALDO, c.Saldo);
+            operation.AddVarcharParam(DB_COL_MONEDA, c.Moneda);
 
             return operation;
         }
@@ -91,6 +93,14 @@ namespace DataAcess.Mapper
             var credit = new Credit
             {
                 Id = GetIntValue(row, DB_COL_ID),
+                Monto = GetDoubleValue(row, DB_COL_MONTO),
+                Tasa = GetDoubleValue(row, DB_COL_TASA),
+                ClienteId = GetStringValue(row, DB_COL_CLIENTEID),
+                Cuota = GetDoubleValue(row, DB_COL_CUOTA),
+                FechaInicio = GetStringValue(row, DB_COL_FEC_INIC),
+                Estado = GetStringValue(row, DB_COL_ESTADO),
+                Saldo = GetDoubleValue(row, DB_COL_SALDO),
+                Moneda = GetStringValue(row, DB_COL_MONEDA)
             };
 
             return credit;
