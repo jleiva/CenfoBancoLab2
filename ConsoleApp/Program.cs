@@ -240,7 +240,7 @@ namespace ConsoleApp
                     var cMng = new CustomerManagement();
                     var customer = new Customer();
 
-                    Console.WriteLine(getOperationHeading(0, 2));
+                    Console.WriteLine(getOperationHeading(0, 1));
                     Console.WriteLine("Digite la cedula del cliente:");
                     customer.Cedula = Console.ReadLine();
                     customer = cMng.RetrieveById(customer);
@@ -342,16 +342,53 @@ namespace ConsoleApp
 
                     if (credit != null)
                     {
+                        Console.WriteLine("******* Condiciones de la Operacion de Credito *******");
+                        Console.WriteLine(" ==> " + credit.GetEntityInformation());
+                        
+                    }
+                    else
+                    {
+                        throw new Exception("Credito no esta registrada");
+                    }
+
+                    break;
+
+                case "4":
+                    Console.WriteLine(getOperationHeading(2, 1));
+                    Console.WriteLine("Digite el ID del credito:");
+                    var iinptuIdCredito = Console.ReadLine();
+                    var idCredito = 0;
+
+                    if (Int32.TryParse(iinptuIdCredito, out idCredito))
+                    {
+                        credit.Id = idCredito;
+                        credit = creditMng.RetrieveById(credit);
+                    }
+                    else
+                    {
+                        throw new Exception("ID del Credito debe ser un numero");
+                    }
+
+                    if (credit != null)
+                    {
+                        Console.WriteLine(" ==> " + credit.GetEntityInformation());
+                        Console.WriteLine();
+
+                        Console.WriteLine("Estado actual de la operacion: " + credit.Estado);
+                        Console.WriteLine("Digite el estado de la operacion: \n 1. Analisis 2. Pendiente 3. Aprobado 4. Cancelado 5. Rechazado");
+                        var estadoOperacion = Console.ReadLine();
+                        estadoOperacion = getEstadoOperacion(estadoOperacion);
+                        credit.Estado = estadoOperacion;
+
+                        creditMng.Update(credit);
+                        Console.WriteLine("Credito fue actualizado");
                         Console.WriteLine(" ==> " + credit.GetEntityInformation());
                     }
                     else
                     {
                         throw new Exception("Credito no esta registrada");
                     }
-                    break;
 
-                case "4":
-                    Console.WriteLine(getOperationHeading(2, 1));
                     break;
 
                 case "5":

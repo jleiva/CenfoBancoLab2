@@ -62,6 +62,7 @@ namespace DataAcess.Mapper
             operation.AddVarcharParam(DB_COL_FEC_INIC, c.FechaInicio);
             operation.AddVarcharParam(DB_COL_ESTADO, c.Estado);
             operation.AddDoubleParam(DB_COL_SALDO, c.Saldo);
+            operation.AddVarcharParam(DB_COL_MONEDA, c.Moneda);
 
             return operation;
         }
