@@ -8,40 +8,40 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
-    class CustomerManagement
+    class CustomerManager
     {
-        private CustomerCrudFactory crudCliente;
+        private CustomerCrudFactory crudCustomer;
 
-        public CustomerManagement()
+        public CustomerManager()
         {
-            crudCliente = new CustomerCrudFactory();
+            crudCustomer = new CustomerCrudFactory();
         }
 
         public void Create(Customer customer)
         {
             
-            crudCliente.Create(customer);
+            crudCustomer.Create(customer);
 
         }
 
         public List<Customer> RetrieveAll()
         {
-            return crudCliente.RetrieveAll<Customer>();
+            return crudCustomer.RetrieveAll<Customer>();
         }
 
         public Customer RetrieveById(Customer customer)
         {
-            return crudCliente.Retrieve<Customer>(customer);
+            return crudCustomer.Retrieve<Customer>(customer);
         }
 
         internal void Update(Customer customer)
         {
-            crudCliente.Update(customer);
+            crudCustomer.Update(customer);
         }
 
         internal void Delete(Customer customer)
         {
-            crudCliente.Delete(customer);
+            crudCustomer.Delete(customer);
         }
     }
 }

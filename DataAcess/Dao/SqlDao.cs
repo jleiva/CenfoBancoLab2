@@ -18,6 +18,7 @@ namespace DataAcess.Dao
 
         private SqlDao()
         {
+            // Definido en el WebAPI/Web.config
             CONNECTION_STRING=ConfigurationManager.ConnectionStrings["CONN_STRING"].ConnectionString;
         }
 

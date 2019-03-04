@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
-    class AccountManagement
+    class AccountManager
     {
         private AccountCrudFactory crudAccount;
 
-        public AccountManagement()
+        public AccountManager()
         {
             crudAccount = new AccountCrudFactory();
         }
