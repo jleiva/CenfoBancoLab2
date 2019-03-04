@@ -46,6 +46,7 @@
     <Compile Include="BaseManager.cs" />
     <Compile Include="CreditManager.cs" />
     <Compile Include="CustomerManager.cs" />
+    <Compile Include="LocalizationManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

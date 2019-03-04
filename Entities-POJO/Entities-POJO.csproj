@@ -45,6 +45,7 @@
     <Compile Include="Credit.cs" />
     <Compile Include="Account.cs" />
     <Compile Include="Address.cs" />
+    <Compile Include="Localization.cs" />
     <Compile Include="ObjectDumper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
