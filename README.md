@@ -3,3 +3,4 @@ Código fuente curso Proyecto de Ingeniería de Software 2 1er Periodo 2019
 
 ## tags
 * lab2 - entregable del Laboratorio 2
+* lab3 - entregable del Laboratorio 3
