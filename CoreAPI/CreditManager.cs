@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp
+namespace CoreAPI
 {
-    class CreditManagement
+    public class CreditManager : BaseManager
     {
         private CreditCrudFactory crudCredit;
 
-        public CreditManagement()
+        public CreditManager()
         {
             crudCredit = new CreditCrudFactory();
         }
@@ -34,12 +34,12 @@ namespace ConsoleApp
             return crudCredit.Retrieve<Credit>(credit);
         }
 
-        internal void Update(Credit credit)
+        public void Update(Credit credit)
         {
             crudCredit.Update(credit);
         }
 
-        internal void Delete(Credit credit)
+        public void Delete(Credit credit)
         {
             crudCredit.Delete(credit);
         }

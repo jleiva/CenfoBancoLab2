@@ -29,7 +29,7 @@ namespace ConsoleApp
         public static void DoIt() { 
             try
             {
-                var mng = new CustomerManagement();
+                var mng = new CustomerManager();
                 var customer = new Customer();
 
                 Console.WriteLine("***************************");
@@ -79,7 +79,7 @@ namespace ConsoleApp
 
         public static void CustomerOperations()
         {
-            var mng = new CustomerManagement();
+            var mng = new CustomerManager();
             var customer = new Customer();
 
             Console.WriteLine("\r\n");
@@ -224,7 +224,7 @@ namespace ConsoleApp
 
         public static void CreditOperations()
         {
-            var creditMng = new CreditManagement();
+            var creditMng = new CreditManager();
             var credit = new Credit();
 
             Console.WriteLine("\r\n");
@@ -237,7 +237,7 @@ namespace ConsoleApp
             switch (operacionSeleccionada)
             {
                 case "1":
-                    var cMng = new CustomerManagement();
+                    var cMng = new CustomerManager();
                     var customer = new Customer();
 
                     Console.WriteLine(getOperationHeading(0, 1));
@@ -422,7 +422,7 @@ namespace ConsoleApp
         public static void AccountOperations()
         {
 
-            var mng = new AccountManagement();
+            var mng = new AccountManager();
             var account = new Account();
 
             Console.WriteLine("\r\n");
@@ -435,7 +435,7 @@ namespace ConsoleApp
             switch (operacionSeleccionada)
             {
                 case "1":
-                    var cMng = new CustomerManagement();
+                    var cMng = new CustomerManager();
                     var customer = new Customer();
 
                     Console.WriteLine(getOperationHeading(0, 2));

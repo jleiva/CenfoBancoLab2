@@ -93,6 +93,9 @@ namespace DataAcess.Mapper
                 Cedula = GetStringValue(row, DB_COL_CEDULA),
                 Nombre = GetStringValue(row, DB_COL_NOMBRE),
                 Apellido = GetStringValue(row, DB_COL_APELLIDO),
+                Genero = GetStringValue(row, DB_COL_GENERO),
+                EstadoCivil = GetStringValue(row, DB_COL_EST_CIVIL),
+                FechaNacimiento = GetStringValue(row, DB_COL_FEC_NAC),
                 Edad = GetIntValue(row, DB_COL_AGE)
             };
 
